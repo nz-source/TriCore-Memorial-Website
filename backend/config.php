@@ -18,7 +18,8 @@ return [
     'http://localhost',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:5175',
-    'http://127.0.0.1:5177'
+    'http://127.0.0.1:5177',
+    'https://nz-source.github.io'
     ],
 
     // Image Upload Configuration
