@@ -1,0 +1,1435 @@
+/* =========================================
+   1. ROOT VARIABLES
+========================================= */
+:root {
+  color-scheme: dark;
+  --bg: #3a3a3a;
+  --card: rgba(0, 0, 0, 0.25);
+  --ink: #fff;
+  --mute: #cfcfcf;
+  --gold: #e8d9b0;
+  --line: rgba(255, 255, 255, 0.7);
+  --glow: #f0b84a;
+  --radius: 10px;
+  --transition: 0.2s ease;
+}
+
+/* =========================================
+   2. GLOBAL RESET AND BODY
+========================================= */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      120deg,
+      #0e0e0e,
+      #3a3a3a 55%,
+      #6e6e6e
+    ) fixed;
+  color: var(--ink);
+  font: 400 16px/1.6 Jost, system-ui, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 0 0,
+      rgba(255, 255, 240, 0.3),
+      transparent 40%
+    );
+}
+
+/* =========================================
+   3. HEADINGS AND TYPOGRAPHY
+========================================= */
+h1,
+h2,
+h3,
+.serif {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 7vw, 4.6rem);
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: 1.35rem;
+}
+
+p {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--gold);
+}
+
+/* =========================================
+   4. NAVIGATION
+========================================= */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  align-items: center;
+  padding: 1rem 5vw;
+  border-bottom: 1px solid var(--line);
+}
+
+nav .brand {
+  font: italic 600 1.7rem "Cormorant Garamond", serif;
+  margin-right: auto;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+nav a.l,
+nav button.l {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  text-decoration: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  padding: 0.25rem 0;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    color var(--transition),
+    border-color var(--transition);
+}
+
+nav a.l:hover,
+nav button.l:hover,
+nav a.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+nav button.l:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* =========================================
+   5. MAIN CONTENT LAYOUT
+========================================= */
+main {
+  width: 100%;
+  max-width: 1280px;
+  padding: 2rem 5vw;
+  margin: auto;
+  min-height: 60vh;
+}
+
+.admin-main {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 100vh;
+  margin: 0 !important;
+  padding: 20px 3vw !important;
+}
+
+.public-main {
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+}
+
+/* =========================================
+   6. BUTTONS
+========================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #111;
+  border: 1px solid #fff;
+  border-radius: 99px;
+  padding: 0.5rem 1.1rem;
+  font: 500 0.95rem Jost, sans-serif;
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    color var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.o {
+  background: transparent;
+  color: #fff;
+  border-color: var(--line);
+}
+
+.btn.o:hover {
+  background: #fff;
+  color: #111;
+}
+
+.btn.s {
+  padding: 0.25rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+.btn.d {
+  background: transparent;
+  border-color: #e08a8a;
+  color: #e08a8a;
+}
+
+.btn.d:hover {
+  background: #e08a8a;
+  color: #111;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+  transform: none;
+}
+
+/* =========================================
+   7. FORM ELEMENTS
+========================================= */
+input,
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.8rem;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gold);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #c5c5c5;
+  opacity: 0.8;
+}
+
+select option {
+  background: #2f2f2f;
+  color: #fff;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  accent-color: var(--glow);
+  cursor: pointer;
+}
+
+input[type="file"] {
+  padding: 0.45rem;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--mute);
+  margin: 0.6rem 0 0.2rem;
+}
+
+fieldset {
+  border: 1px solid var(--line);
+  margin: 1rem 0;
+  padding: 0.5rem 1rem 1rem;
+}
+
+legend {
+  font: 600 1.2rem "Cormorant Garamond", serif;
+  padding: 0 0.4rem;
+}
+
+.chk {
+  width: auto;
+  margin-right: 0.4rem;
+}
+
+/* =========================================
+   8. FOCUS ACCESSIBILITY
+========================================= */
+:focus-visible {
+  outline: 2px solid #cbbfe6;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   9. SEARCH BAR
+========================================= */
+.search {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.2rem 0;
+  flex-wrap: wrap;
+}
+
+.search input {
+  flex: 1;
+  min-width: 200px;
+  border-radius: 99px;
+  background: #fff;
+  color: #111;
+}
+
+.search input::placeholder {
+  color: #777;
+}
+
+/* =========================================
+   10. HERO SECTION
+========================================= */
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 0 3rem;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: var(--mute);
+  max-width: 46ch;
+}
+
+.hero .candle {
+  transform: scale(2.2);
+  margin: 4rem auto 3rem;
+}
+
+/* =========================================
+   11. CATEGORY TABS
+========================================= */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.tabs button {
+  text-transform: uppercase;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #fff;
+  font: 500 1rem Jost, sans-serif;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+.tabs button:hover,
+.tabs .on {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* =========================================
+   12. MEMORIAL GRID AND CARDS
+========================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #fff;
+  padding: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card .nm {
+  font: 600 1.6rem "Cormorant Garamond", serif;
+}
+
+.card small,
+small {
+  color: var(--mute);
+}
+
+.card .row,
+.row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.card .btn.o {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+
+/* =========================================
+   13. PROFILE IMAGE
+========================================= */
+.ph {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+  border: 2px solid var(--gold);
+  display: block;
+}
+
+/* =========================================
+   14. MEMORIAL ICON
+========================================= */
+.ico {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* =========================================
+   15. CANDLE DESIGN
+========================================= */
+.candle {
+  position: relative;
+  width: 34px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 4px 4px 2px 2px;
+  background:
+    linear-gradient(
+      90deg,
+      #e9dcc0,
+      #fff7e4,
+      #e2d3b2
+    );
+}
+
+.candle.c2 {
+  width: 22px;
+  height: 90px;
+  background:
+    linear-gradient(
+      90deg,
+      #c9a7a0,
+      #f1d4cd,
+      #c0978f
+    );
+}
+
+.candle.c3 {
+  width: 46px;
+  height: 44px;
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      90deg,
+      #b9a8d6,
+      #e4dbf4,
+      #a898c9
+    );
+}
+
+.candle::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -24px;
+  width: 14px;
+  height: 26px;
+  margin-left: -7px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background:
+    radial-gradient(
+      #fff6c8,
+      var(--glow) 60%,
+      #e57a2c
+    );
+  box-shadow: 0 0 22px 8px rgba(240, 184, 74, 0.55);
+  transform-origin: 50% 100%;
+  animation: fl 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes fl {
+  0% {
+    transform: scale(1, 1) rotate(-2deg);
+  }
+
+  100% {
+    transform: scale(0.9, 1.1) rotate(3deg);
+  }
+}
+
+/* =========================================
+   16. TRIBUTE / MEMORY
+========================================= */
+.tribute {
+  border-left: 3px solid var(--gold);
+  padding: 0.4rem 1rem;
+  margin: 0.7rem 0;
+  background: var(--card);
+  overflow-wrap: anywhere;
+}
+
+.tribute img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* =========================================
+   17. MODAL
+========================================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 24px;
+  z-index: 9999;
+}
+
+.box {
+  background: #2f2f2f;
+  border: 1px solid var(--line);
+  padding: 1.5rem;
+  width: min(860px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  position: relative;
+  border-radius: 8px;
+  margin: auto;
+}
+
+.x {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  display: block;
+  z-index: 2;
+}
+
+/* =========================================
+   18. CANDLE OPTIONS - ORIGINAL DESIGN
+========================================= */
+.opts {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.4rem;
+}
+
+.opts label {
+  width: 76px;
+  height: 140px;
+  margin: 0;
+  padding: 24px 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  transition:
+    border-color var(--transition),
+    background var(--transition);
+}
+
+.opts label:hover {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.opts label .candle {
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.opts label input[type="radio"] {
+  margin: auto 0 0;
+  width: 15px;
+  height: 15px;
+  accent-color: var(--glow);
+}
+
+.opts label:has(input[type="radio"]:checked) {
+  border: 2px solid var(--glow);
+  background: rgba(240, 184, 74, 0.08);
+}
+
+/* =========================================
+   19. UPDATED CANDLE FORM
+========================================= */
+.candle-form {
+  width: 100%;
+}
+
+.candle-form h2 {
+  padding-right: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.candle-instruction {
+  color: var(--mute);
+  margin-bottom: 1rem;
+}
+
+.candle-options {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 1.2rem 0 1.8rem;
+}
+
+.candle-options .candle-option {
+  width: 120px;
+  height: 180px;
+  flex: 0 0 120px;
+  margin: 0;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.candle-options .candle-option:hover {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.candle-preview {
+  width: 100%;
+  height: 112px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 24px;
+  overflow: visible;
+}
+
+.candle-preview .candle {
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.candle-options .candle-name {
+  display: block;
+  color: #fff;
+  font-size: 0.85rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.candle-options .candle-option input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  margin: auto 0 0;
+  accent-color: var(--glow);
+  cursor: pointer;
+}
+
+.candle-options .candle-option.selected {
+  border: 2px solid var(--glow);
+  background: rgba(240, 184, 74, 0.1);
+}
+
+.candle-form .candle-anonymous {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0.8rem 0 1rem;
+  cursor: pointer;
+}
+
+.candle-form .candle-anonymous input {
+  margin: 0;
+}
+
+.candle-submit {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* =========================================
+   20. TWO COLUMN FORM
+========================================= */
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1rem;
+}
+
+/* =========================================
+   21. ADMIN DASHBOARD MAIN LAYOUT
+========================================= */
+body:has(.admin) nav {
+  display: none !important;
+}
+
+body:has(.admin) main {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1.5rem 3vw;
+}
+
+.admin {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/* =========================================
+   22. ADMIN SIDEBAR
+========================================= */
+.side {
+  width: 100%;
+  background: #080808;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-self: stretch;
+  min-height: calc(100vh - 3rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.side .serif {
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.admin-brand {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.admin-flower {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 0.5rem;
+}
+
+.admin-flower img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.admin-brand h2 {
+  color: #fff;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.admin-subtitle {
+  color: var(--gold);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.admin-brand small {
+  display: block;
+  margin-top: 0.8rem;
+}
+
+.admin-role {
+  font: 400 0.9rem Jost, sans-serif;
+  color: #ccc;
+  margin-top: 0.2rem;
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.side-menu button {
+  width: 100%;
+  min-height: 46px;
+}
+
+.side button {
+  width: 100%;
+  min-height: 42px;
+  background: #fff;
+  color: #000;
+  border: 0;
+  border-radius: 99px;
+  padding: 0.55rem 0.8rem;
+  font: 500 0.95rem Jost, sans-serif;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.side button:hover {
+  background: var(--gold);
+  color: #111;
+}
+
+.side button.on {
+  background: var(--glow);
+  color: #111;
+}
+
+/* =========================================
+   23. ADMIN LOGOUT BUTTON
+========================================= */
+.side-logout {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.side button.logout,
+.side .logout {
+  background: #a83c3c;
+  color: #fff;
+  margin-top: 0.2rem;
+}
+
+.side button.logout:hover,
+.side .logout:hover {
+  background: #d9534f;
+  color: #fff;
+}
+
+.side-logout button.logout {
+  width: 100%;
+  min-height: 42px;
+  background: #a83c3c;
+  color: #fff;
+  border: 0;
+  border-radius: 99px;
+  font: 500 0.95rem Jost, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.side-logout button.logout:hover {
+  background: #d9534f;
+}
+
+.side-logout button.logout:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* =========================================
+   24. ADMIN CONTENT
+========================================= */
+.admin-content {
+  min-width: 0;
+  width: 100%;
+  padding: 0.2rem 0;
+}
+
+.admin-content h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+/* =========================================
+   25. ADMIN TABLES
+========================================= */
+.admin .tw {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin table {
+  width: 100%;
+  min-width: 850px;
+  table-layout: auto;
+}
+
+.admin th,
+.admin td {
+  padding: 0.65rem 0.55rem;
+}
+
+.admin th {
+  white-space: nowrap;
+}
+
+.admin td:first-child {
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+/* =========================================
+   26. ADMIN FORM FIELDS
+========================================= */
+.admin input,
+.admin select,
+.admin textarea {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* =========================================
+   27. DASHBOARD STATISTICS
+========================================= */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.stat {
+  border: 1px solid var(--line);
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat b {
+  display: block;
+  font: 600 2.6rem "Cormorant Garamond", serif;
+}
+
+.admin .stats {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.admin .stat {
+  min-width: 0;
+}
+
+/* =========================================
+   28. GENERAL TABLES
+========================================= */
+.tw {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+td {
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   29. GALLERY
+========================================= */
+.gal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.8rem;
+}
+
+.gal img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* =========================================
+   30. TOAST NOTIFICATION
+========================================= */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #111;
+  padding: 0.6rem 1.2rem;
+  border-radius: 99px;
+  z-index: 99;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   31. FOOTER
+========================================= */
+footer {
+  text-align: center;
+  color: var(--mute);
+  padding: 2rem 5vw;
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+footer p {
+  margin: 0.3rem 0;
+}
+
+/* =========================================
+   32. ADMIN DASHBOARD MEMORIAL CARDS
+========================================= */
+.dashboard {
+  width: 100%;
+  min-width: 0;
+}
+
+.dashboard-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0 1.2rem;
+}
+
+.dashboard-actions h3 {
+  margin: 0;
+  color: var(--ink);
+}
+
+.admin-memorial-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
+  align-items: stretch;
+}
+
+.admin-memorial-card {
+  min-width: 0;
+  min-height: 350px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  gap: 0.45rem;
+}
+
+.admin-memorial-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.admin-memorial-placeholder {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.admin-memorial-cross {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  color: var(--gold);
+  font-size: 2.5rem;
+}
+
+.admin-memorial-placeholder .candle {
+  margin-top: 1.5rem;
+}
+
+.admin-memorial-subtitle {
+  color: var(--mute);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.admin-memorial-name {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.6rem;
+  color: #fff;
+  margin: 0.2rem 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-memorial-dates,
+.admin-memorial-cemetery,
+.admin-memorial-detail {
+  color: var(--mute);
+  font-size: 0.88rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-memorial-info {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.admin-memorial-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+}
+
+.admin-memorial-info span {
+  color: var(--mute);
+  font-size: 0.75rem;
+}
+
+.admin-memorial-info strong {
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+  text-transform: capitalize;
+}
+
+.status-published {
+  color: #8ee0a4;
+}
+
+.status-draft {
+  color: var(--gold);
+}
+
+.admin-empty {
+  padding: 2rem;
+  text-align: center;
+  border: 1px dashed var(--line);
+  color: var(--mute);
+}
+
+/* =========================================
+   33. RESPONSIVE DESIGN
+========================================= */
+
+/* Large tablets and smaller desktops */
+@media (max-width: 1200px) {
+  .admin-memorial-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  body:has(.admin) main {
+    padding: 1rem 2vw;
+  }
+
+  .admin {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .side {
+    padding: 1rem;
+  }
+
+  .admin-memorial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Smaller tablets */
+@media (max-width: 800px) {
+  .hero,
+  .two {
+    grid-template-columns: 1fr;
+  }
+
+  .hero .candle {
+    margin: 3rem auto;
+  }
+
+  .admin {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .side {
+    min-height: auto;
+  }
+
+  .side-menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .side-logout {
+    margin-top: 1rem;
+  }
+}
+
+/* Small screens */
+@media (max-width: 700px) {
+  .admin {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .admin-content {
+    width: 100%;
+  }
+
+  .admin h1 {
+    font-size: 2.3rem;
+  }
+
+  .opts {
+    gap: 0.7rem;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 600px) {
+  nav {
+    padding: 1rem 4vw;
+    gap: 0.6rem 0.9rem;
+  }
+
+  nav .brand {
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  nav a.l,
+  nav button.l {
+    font-size: 0.78rem;
+  }
+
+  main {
+    padding: 1.5rem 4vw;
+  }
+
+  .hero {
+    padding: 1rem 0 2rem;
+    gap: 1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .side-menu {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat b {
+    font-size: 2rem;
+  }
+
+  .box {
+    padding: 1.2rem;
+    padding-top: 3.5rem;
+  }
+
+  .overlay {
+    padding: 2vh 3vw;
+  }
+
+  .search input {
+    min-width: 0;
+  }
+
+  .toast {
+    bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .candle-options {
+    gap: 10px;
+  }
+
+  .candle-options .candle-option {
+    width: 100px;
+    flex-basis: 100px;
+    height: 170px;
+  }
+
+  .candle-form h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Very small mobile devices */
+@media (max-width: 500px) {
+  .admin-memorial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dashboard-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+  nav {
+    gap: 0.5rem;
+  }
+
+  nav a.l,
+  nav button.l {
+    font-size: 0.7rem;
+  }
+
+  .side-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .opts {
+    gap: 0.5rem;
+  }
+
+  .candle-options {
+    gap: 8px;
+  }
+
+  .candle-options .candle-option {
+    width: 90px;
+    flex-basis: 90px;
+  }
+}
+
+/* =========================================
+   34. REDUCED MOTION
+========================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
