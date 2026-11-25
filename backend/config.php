@@ -4,10 +4,10 @@
 return [
     // Database Configuration
     'db' => [
-        'host' => 'localhost',
-        'name' => 'tricore_memorial',
-        'user' => 'root',
-        'pass' => ''
+        'host' => 'sql305.infinityfree.com',
+        'name' => 'if0_43516322_tricore_memorial',
+        'user' => 'if0_43516322',
+        'pass' => 'YOUR_VPANEL_PASSWORD'
     ],
 
     // Allowed Origins for React + PHP API

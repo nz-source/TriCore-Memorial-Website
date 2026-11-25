@@ -1,7 +1,3 @@
--- TriCore Memorial Website: MySQL schema for WAMP (phpMyAdmin > Import)
-CREATE DATABASE IF NOT EXISTS tricore_memorial CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE tricore_memorial;
-
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(120) NOT NULL,
